@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma Todo List DevOps</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
+        h1 { color: #333; }
+        .todo { background: white; padding: 10px; margin: 5px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>📝 Ma Liste de Choses à Faire</h1>
+    <div id="todos"></div>
+    
+    <script>
+        fetch('/api/')
+            .then(response => response.json())
+            .then(data => {
+                const todosDiv = document.getElementById('todos');
+                data.todos.forEach(todo => {
+                    todosDiv.innerHTML += `<div class="todo">✅ ${todo.tache}</div>`;
+                });
+            });
+    </script>
+</body>
+</html>
